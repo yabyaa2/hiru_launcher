@@ -1,13 +1,13 @@
 {
-  "name": "helioslauncher",
+  "name": "NZCLauncher",
   "version": "1.0.2",
-  "productName": "Helios Launcher",
-  "description": "Modded Minecraft Launcher",
-  "author": "Daniel Scalzi (https://github.com/dscalzi/)",
-  "license": "UNLICENSED",
-  "homepage": "https://github.com/dscalzi/HeliosLauncher",
+  "productName": "NZC Launcher",
+  "description": "Nekozouneko Community Launcher",
+  "author": "Team Nekozouneko (https://github.com/TEAMNekozouneko/)",
+  "license": "MIT-Licence",
+  "homepage": "https://github.com/TEAMNekozouneko/NZC-Launcher",
   "bugs": {
-    "url": "https://github.com/dscalzi/HeliosLauncher/issues"
+    "url": "https://github.com/TEAMNekozouneko/NZC-Launcher/issues"
   },
   "private": true,
   "main": "index.js",
@@ -44,7 +44,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dscalzi/HeliosLauncher.git"
+    "url": "git+https://github.com/TEAMNekozouneko/NZC-Launcher.git"
   },
   "build": {
     "publish": {
