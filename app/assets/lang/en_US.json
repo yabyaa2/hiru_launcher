@@ -1,48 +1,48 @@
 {
     "html": {
-        "avatarOverlay": "Edit"
+        "avatarOverlay": "編集"
     },
     "js": {
         "login": {
             "error": {
-                "invalidValue": "* Invalid Value",
-                "requiredValue": "* Required",
+                "invalidValue": "* 無効な値",
+                "requiredValue": "* 必須",
                 "userMigrated": {
-                    "title": "Error During Login:<br>Invalid Credentials",
-                    "desc": "You've attempted to login with a migrated account. Try again using the account email as the username."
+                    "title": "ログイン中にエラーが発生しました。:<br>認証情報が不明です。",
+                    "desc": "移行済みのアカウントにログインを試みました。ユーザー名をメールアドレスとして再度お試しください。"
                 },
                 "invalidCredentials": {
-                    "title": "Error During Login:<br>Invalid Credentials",
-                    "desc": "The email or password you've entered is incorrect. Please try again."
+                    "title": "ログイン中にエラーが発生しました。:<br>認証情報が不明です。",
+                    "desc": "入力されたメールアドレスまたはパスワードが間違えています。しばらくしてからもう一度お試しください。"
                 },
                 "rateLimit": {
-                    "title": "Error During Login:<br>Too Many Attempts",
-                    "desc": "There have been too many login attempts with this account recently. Please try again later."
+                    "title": "ログイン中にエラーが発生しました:<br>多くのログイン試行",
+                    "desc": "近日中に多くのログインが試されたため、ログインがブロックされました。もうしばらくしてからもう一度お試しください。"
                 },
                 "noInternet": {
-                    "title": "Error During Login:<br>No Internet Connection",
-                    "desc": "You must be connected to the internet in order to login. Please connect and try again."
+                    "title": "ログイン中にエラーが発生しました。:<br>インターネットに接続されていません。",
+                    "desc": "ログインするためにはインターネットに接続されている必要があります。接続を確認してからお試しください。"
                 },
                 "authDown": {
-                    "title": "Error During Login:<br>Authentication Server Offline",
-                    "desc": "Mojang's authentication server is currently offline or unreachable. Please wait a bit and try again. You can check the status of the server on <a href=\"https://help.mojang.com/\">Mojang's help portal</a>."
+                    "title": "ログイン中にエラーが発生しました。:<br>認証サーバーがオフラインです。",
+                    "desc": "Mojangの認証サーバーにアクセスできませんでした。 少々待ってからお試しください。 認証サーバーの状況は次のサイトで確認できます。 <a href=\"https://help.mojang.com/\">Mojangヘルプポータル</a>."
                 },
                 "notPaid": {
-                    "title": "Error During Login:<br>Game Not Purchased",
-                    "desc": "The account you are trying to login with has not purchased a copy of Minecraft.<br>You may purchase a copy on <a href=\"https://minecraft.net/\">Minecraft.net</a>"
+                    "title": "ログイン中にエラーが発生しました。<br>ゲームの購入が確認できませんでした。",
+                    "desc": "購入されていないデモアカウントでのログインを試みました。<br>右記のサイトより正規品のご購入をお試しください。 <a href=\"https://minecraft.net/\">Minecraft.net</a>"
                 },
                 "unknown": {
-                    "title": "Error During Login:<br>Unknown Error"
+                    "title": "ログイン中にエラーが発生しました。:<br>不明なエラー"
                 }
             },
-            "login": "LOGIN",
-            "loggingIn": "LOGGING IN",
-            "success": "SUCCESS",
-            "tryAgain": "Try Again"
+            "login": "ログイン",
+            "loggingIn": "ログインしています",
+            "success": "完了",
+            "tryAgain": "もう一度試す"
         },
         "landing": {
             "launch": {
-                "pleaseWait": "Please wait.."
+                "pleaseWait": "少々お待ちください..."
             }
         }
     }
