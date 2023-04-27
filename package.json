@@ -45,5 +45,13 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dscalzi/HeliosLauncher.git"
+  },
+  "build":{
+    "publish": {
+      "provider": "github",
+      "owner": "TEAMNekozouneko",
+      "repo": "NZC-Launcher",
+      "releaseType": "release"
+    }
   }
 }
