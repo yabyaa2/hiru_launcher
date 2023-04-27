@@ -8,14 +8,14 @@ jobs:
 
     strategy:
       matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
+        os: [macos-latest, windows-latest]
 
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v1
 
       - name: Snapcraft Action
-        uses: samuelmeuli/action-snapcraft@v2.1.1
+        uses: samuelmeuli/action-snapcraft@v2
 
       - name: Install Node.js, NPM and Yarn
         uses: actions/setup-node@v1
