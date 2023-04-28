@@ -125,7 +125,7 @@ document.getElementById('launch_button').addEventListener('click', async e => {
         }
     } catch(err) {
         loggerLanding.error('Unhandled error in during launch process.', err)
-        showLaunchFailure('Error During Launch', 'See console (CTRL + Shift + i) for more details.')
+        showLaunchFailure('起動中にエラーが発生しました。', 'コンソールに詳細があります。')
     }
 })
 
@@ -288,7 +288,7 @@ function showLaunchFailure(title, desc){
     setOverlayContent(
         title,
         desc,
-        'Okay'
+        '了解しました'
     )
     setOverlayHandler(null)
     toggleOverlay(true)
@@ -304,7 +304,7 @@ function showLaunchFailure(title, desc){
  */
 async function asyncSystemScan(effectiveJavaOptions, launchAfter = true){
 
-    setLaunchDetails('Checking system info..')
+    setLaunchDetails('システム要件を確認しています..')
     toggleLaunchArea(true)
     setLaunchPercentage(0, 100)
 
@@ -317,13 +317,13 @@ async function asyncSystemScan(effectiveJavaOptions, launchAfter = true){
         // If the result is null, no valid Java installation was found.
         // Show this information to the user.
         setOverlayContent(
-            'No Compatible<br>Java Installation Found',
-            `In order to join WesterosCraft, you need a 64-bit installation of Java ${effectiveJavaOptions.suggestedMajor}. Would you like us to install a copy?`,
-            'Install Java',
-            'Install Manually'
+            'ご利用可能な<br>Javaが見つかりませんでした。',
+            `このパックを利用するには、64ビット版の Java ${effectiveJavaOptions.suggestedMajor} が必要です。インストールしますか？`,
+            'Javaをインストールする',
+            '手動でインストールする'
         )
         setOverlayHandler(() => {
-            setLaunchDetails('Preparing Java Download..')
+            setLaunchDetails('Javaのダウンロードをしています..')
             toggleOverlay(false)
             
             try {
@@ -337,10 +337,10 @@ async function asyncSystemScan(effectiveJavaOptions, launchAfter = true){
             $('#overlayContent').fadeOut(250, () => {
                 //$('#overlayDismiss').toggle(false)
                 setOverlayContent(
-                    'Java is Required<br>to Launch',
-                    `A valid x64 installation of Java ${effectiveJavaOptions.suggestedMajor} is required to launch.<br><br>Please refer to our <a href="https://github.com/dscalzi/HeliosLauncher/wiki/Java-Management#manually-installing-a-valid-version-of-java">Java Management Guide</a> for instructions on how to manually install Java.`,
-                    'I Understand',
-                    'Go Back'
+                    '起動するには<br>Javaをインストールする必要があります。',
+                    `64ビット版の Java ${effectiveJavaOptions.suggestedMajor} が起動に必要です。<br><br><a href="https://github.com/dscalzi/HeliosLauncher/wiki/Java-Management#manually-installing-a-valid-version-of-java">Javaインストールガイド (英語)\</a> に手動でインストールする方法が記載されています。`,
+                    '了解しました',
+                    '戻る'
                 )
                 setOverlayHandler(() => {
                     toggleLaunchArea(false)
@@ -409,7 +409,7 @@ async function downloadJava(effectiveJavaOptions, launchAfter = true) {
     remote.getCurrentWindow().setProgressBar(2)
 
     // Wait for extration to complete.
-    const eLStr = 'Extracting Java'
+    const eLStr = 'Javaを解凍しています'
     let dotStr = ''
     setLaunchDetails(eLStr)
     const extractListener = setInterval(() => {
@@ -456,7 +456,7 @@ async function dlAsync(login = true) {
 
     const loggerLaunchSuite = LoggerUtil.getLogger('LaunchSuite')
 
-    setLaunchDetails('Loading server information..')
+    setLaunchDetails('サーバー情報を読み込んでいます...')
 
     let distro
 
@@ -494,17 +494,17 @@ async function dlAsync(login = true) {
 
     fullRepairModule.childProcess.on('error', (err) => {
         loggerLaunchSuite.error('Error during launch', err)
-        showLaunchFailure('Error During Launch', err.message || 'See console (CTRL + Shift + i) for more details.')
+        showLaunchFailure('起動中にエラーが発生しました。', err.message || 'See console (CTRL + Shift + i) for more details.')
     })
     fullRepairModule.childProcess.on('close', (code, _signal) => {
         if(code !== 0){
             loggerLaunchSuite.error(`Full Repair Module exited with code ${code}, assuming error.`)
-            showLaunchFailure('Error During Launch', 'See console (CTRL + Shift + i) for more details.')
+            showLaunchFailure('起動中にエラーが発生しました。', 'See console (CTRL + Shift + i) for more details.')
         }
     })
 
-    loggerLaunchSuite.info('Validating files.')
-    setLaunchDetails('Validating file integrity..')
+    loggerLaunchSuite.info('ファイルを検証しています')
+    setLaunchDetails('ファイルを検証しています...')
     let invalidFileCount = 0
     try {
         invalidFileCount = await fullRepairModule.verifyFiles(percent => {
@@ -519,8 +519,8 @@ async function dlAsync(login = true) {
     
 
     if(invalidFileCount > 0) {
-        loggerLaunchSuite.info('Downloading files.')
-        setLaunchDetails('Downloading files..')
+        loggerLaunchSuite.info('ファイルをダウンロードしています。')
+        setLaunchDetails('ファイルをダウンロードしています。..')
         setLaunchPercentage(0)
         try {
             await fullRepairModule.download(percent => {
@@ -528,8 +528,8 @@ async function dlAsync(login = true) {
             })
             setDownloadPercentage(100)
         } catch(err) {
-            loggerLaunchSuite.error('Error during file download.')
-            showLaunchFailure('Error During File Download', err.displayable || 'See console (CTRL + Shift + i) for more details.')
+            loggerLaunchSuite.error('ファイルのダウンロード中にエラーが発生しました。')
+            showLaunchFailure('ファイルのダウンロード中にエラーが発生しました。', err.displayable || 'コンソールに詳細があります。')
             return
         }
     } else {
@@ -541,7 +541,7 @@ async function dlAsync(login = true) {
 
     fullRepairModule.destroyReceiver()
 
-    setLaunchDetails('Preparing to launch..')
+    setLaunchDetails('起動の準備をしています...')
 
     const mojangIndexProcessor = new MojangIndexProcessor(
         ConfigManager.getCommonDirectory(),
@@ -604,7 +604,7 @@ async function dlAsync(login = true) {
             data = data.trim()
             if(data.indexOf('Could not find or load main class net.minecraft.launchwrapper.Launch') > -1){
                 loggerLaunchSuite.error('Game launch failed, LaunchWrapper was not downloaded properly.')
-                showLaunchFailure('Error During Launch', 'The main file, LaunchWrapper, failed to download properly. As a result, the game cannot launch.<br><br>To fix this issue, temporarily turn off your antivirus software and launch the game again.<br><br>If you have time, please <a href="https://github.com/dscalzi/HeliosLauncher/issues">submit an issue</a> and let us know what antivirus software you use. We\'ll contact them and try to straighten things out.')
+                showLaunchFailure('起動中にエラーが発生しました。', 'LaunchWrapperが見つかりませんでした。<br><br>Modパックに不具合がある可能性が高いです。<br><br>しばらく経っても治る見込みがない場合は、Team Nekozounekoまでお問い合わせするか、GitHubのIssuesまでお問い合わせください。')
             }
         }
 
@@ -616,7 +616,7 @@ async function dlAsync(login = true) {
             proc.stdout.on('data', tempListener)
             proc.stderr.on('data', gameErrorListener)
 
-            setLaunchDetails('Done. Enjoy the server!')
+            setLaunchDetails('起動が完了しました！<br>しばらくお待ちください')
 
             // Init Discord Hook
             if(distro.rawDistribution.discord != null && serv.rawServerdiscord != null){
@@ -632,8 +632,8 @@ async function dlAsync(login = true) {
 
         } catch(err) {
 
-            loggerLaunchSuite.error('Error during launch', err)
-            showLaunchFailure('Error During Launch', 'Please check the console (CTRL + Shift + i) for more details.')
+            loggerLaunchSuite.error('起動中にエラーが発生しました。', err)
+            showLaunchFailure('起動中にエラーが発生しました。', 'コンソールに詳細があります。')
 
         }
     }
