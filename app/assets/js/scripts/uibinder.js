@@ -115,9 +115,9 @@ function showFatalStartupError(){
         $('#loadingContainer').fadeOut(250, () => {
             document.getElementById('overlayContainer').style.background = 'none'
             setOverlayContent(
-                'Fatal Error: Unable to Load Distribution Index',
-                'A connection could not be established to our servers to download the distribution index. No local copies were available to load. <br><br>The distribution index is an essential file which provides the latest server information. The launcher is unable to start without it. Ensure you are connected to the internet and relaunch the application.',
-                'Close'
+                '重要なエラー: Distributionファイルを読み込めませんでした。',
+                'サーバーからDistributionファイルをダウンロードできず、ローカルファイルにも見当たりませんでした。 <br><br>Distributionファイルは最新のパック情報や、サーバー情報を取得する重要なファイルです。 そのため、ファイルが破損している場合はランチャーを起動できません。 インターネット接続を確認し、ランチャーを再起動することをお試しください。',
+                '閉じる'
             )
             setOverlayHandler(() => {
                 const window = remote.getCurrentWindow()
